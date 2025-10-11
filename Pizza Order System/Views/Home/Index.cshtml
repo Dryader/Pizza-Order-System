@@ -1,0 +1,55 @@
+﻿@* Student: yuval matasaro, ID: 991735973 *@
+@model OrderInputModel
+@{
+    ViewData["Title"] = "Pizza Order";
+}
+
+<div class="row align-items-center mb-4">
+    <div class="col-md-8">
+        <h1 class="display-5">Welcome to Pizza Order System</h1>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="d-flex justify-content-center gap-3">
+            <img src="~/images/plain.svg" alt="Plain Pizza" width="80" height="80"/>
+            <img src="~/images/crispy.svg" alt="Crispy Pizza" width="80" height="80"/>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Place Your Order</h5>
+                <form asp-action="Index" method="post" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="CustomerName" class="form-label"></label>
+                        <input asp-for="CustomerName" class="form-control"/>
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PizzaType" class="form-label"></label>
+                        <select asp-for="PizzaType" class="form-select"
+                                asp-items="Html.GetEnumSelectList<PizzaType>()"></select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PizzaSize" class="form-label"></label>
+                        <select asp-for="PizzaSize" class="form-select"
+                                asp-items="Html.GetEnumSelectList<PizzaSize>()"></select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Quantity" class="form-label"></label>
+                        <input asp-for="Quantity" class="form-control" min="1"/>
+                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate Bill</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

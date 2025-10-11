@@ -1,0 +1,7 @@
+﻿<!-- Student: yuval matasaro, ID: 991735973 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="45" fill="#f2c27b" stroke="#8b5e34" stroke-width="4"/>
+    <circle cx="50" cy="50" r="30" fill="#ffe0a8"/>
+    <text x="50" y="55" font-size="14" text-anchor="middle" fill="#6b3f1d">Crispy</text>
+</svg>
+

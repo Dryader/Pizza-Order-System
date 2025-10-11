@@ -1,0 +1,53 @@
+﻿@* Student: yuval matasaro, ID: 991735973 *@
+@model ReceiptModel
+@{
+    ViewData["Title"] = "Receipt";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title mb-4">Order Receipt</h3>
+
+                <dl class="row">
+                    <dt class="col-sm-4">Customer Name</dt>
+                    <dd class="col-sm-8">@Model.CustomerName</dd>
+
+                    <dt class="col-sm-4">Pizza</dt>
+                    <dd class="col-sm-8">@Model.PizzaType @Model.PizzaSize x @Model.Quantity</dd>
+
+                    <dt class="col-sm-4">Price per item</dt>
+                    <dd class="col-sm-8">@Model.PricePerItem.ToString("C")</dd>
+
+                    <dt class="col-sm-4">Subtotal</dt>
+                    <dd class="col-sm-8">@Model.SubtotalBeforeDiscount.ToString("C")</dd>
+
+                    <dt class="col-sm-4">Discount</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.DiscountAmount > 0)
+                        {
+                            @($"{Model.DiscountRate:P0} (-{Model.DiscountAmount.ToString("C")})")
+                        }
+                        else
+                        {
+                            @("N/A")
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">HST (@(Model.TaxRate * 100)%)</dt>
+                    <dd class="col-sm-8">@Model.TaxAmount.ToString("C")</dd>
+
+                    <dt class="col-sm-4">Total</dt>
+                    <dd class="col-sm-8 fw-bold">@Model.Total.ToString("C")</dd>
+                </dl>
+
+                <a asp-action="Index" class="btn btn-secondary">Place Another Order</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <img class="mb-3" src="~/images/plain.svg" alt="Plain Pizza" width="120" height="120"/>
+        <img src="~/images/crispy.svg" alt="Crispy Pizza" width="120" height="120"/>
+    </div>
+</div>
